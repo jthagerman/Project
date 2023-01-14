@@ -3,7 +3,12 @@ import Example from '@/Components/Functional/example'
 
 
 
-export default function Home() {
+export default function Home({time}: any) {
+
+
+  const revalidate =()  => {
+    fetch('/api/revalidate')
+  }
   return (
     <>
       <Head>
@@ -12,9 +17,24 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <h1>{time}</h1>
+      <button onClick={() => revalidate()}>Revalidate Time</button>
       <Example/>
      
     </>
   )
+}
+
+
+export function getStaticProps() {
+
+  console.log('Getting Static Props') 
+
+  return {
+    props: {
+      time: new Date().getTime()
+    },
+    revalidate: 100
+
+  }
 }
