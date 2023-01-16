@@ -10,7 +10,7 @@
     "gendocs": "apidoc -i pages/api -o documentation"
   },
   "dependencies": {
-    "@next/font": "13.1.2",
+    "@next/font": "^13.1.2",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
@@ -28,5 +28,10 @@
   "devDependencies": {
     "apidoc": "^0.53.1",
     "babel-plugin-styled-components": "^2.0.7"
+    "@faker-js/faker": "^7.6.0",
+    "eslint-config-prettier": "^8.6.0",
+    "install": "^0.13.0",
+    "npm": "^9.3.0",
+    "prettier": "^2.8.3"
   }
 }
