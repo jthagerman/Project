@@ -40,23 +40,3 @@ export const Image = styled.div<{ src: string }>`
   min-height: 300px;
   background-image: url(${(props) => props.src});
 `;
-
-export const EmphasizedOrange = styled.em<{ src: string }>`
-  font-style: normal;
-  display: inline-block;
-  position: relative;
-  color: ${(props) => props.theme.colors.orange};
-  ::after {
-    content: "";
-    left: 0px;
-    right: 0px;
-    top: 3.1rem;
-    height: 22px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url(${(props) => props.src});
-    content: "";
-    position: absolute;
-    display: inline-block;
-  }
-`;
