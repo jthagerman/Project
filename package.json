@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gendocs": "apidoc -i pages/api -o documentation"
   },
   "dependencies": {
     "@next/font": "13.1.2",
@@ -16,6 +17,8 @@
     "@types/styled-components": "^5.1.26",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.2",
+    "mongoose": "^6.8.3",
+    "mongoose-validator": "^2.1.0",
     "next": "13.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -23,6 +26,7 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "apidoc": "^0.53.1",
     "babel-plugin-styled-components": "^2.0.7"
   }
 }
