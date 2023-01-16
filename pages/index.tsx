@@ -5,6 +5,7 @@ import tuning from "public/images/icons/tuning.svg";
 import RecommendedPart from "@/Components/Functional/RecommendedPart";
 import { faker } from "@faker-js/faker";
 import dynamic from "next/dynamic";
+import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
 
 // import { faker } from '@faker-js/faker/locale/de';
 
@@ -16,6 +17,7 @@ export default function Home({ time, parts }: any) {
       </Head>
 
       <div>
+        <DragyAdvertisement />
         <RecommendedPart {...parts} />
       </div>
     </>
