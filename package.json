@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "apidoc": "^0.53.1",
-    "babel-plugin-styled-components": "^2.0.7"
+    "babel-plugin-styled-components": "^2.0.7",
     "@faker-js/faker": "^7.6.0",
     "eslint-config-prettier": "^8.6.0",
     "install": "^0.13.0",
