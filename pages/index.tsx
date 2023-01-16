@@ -4,6 +4,7 @@ import Icon from "@/Components/Functional/Icon";
 import tuning from "public/images/icons/tuning.svg";
 import { faker } from "@faker-js/faker";
 import dynamic from "next/dynamic";
+import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
 
 // import { faker } from '@faker-js/faker/locale/de';
 
@@ -14,7 +15,9 @@ export default function Home({ time, parts }: any) {
         <title>Project</title>
       </Head>
 
-      <div></div>
+      <div>
+        <DragyAdvertisement />
+      </div>
     </>
   );
 }
