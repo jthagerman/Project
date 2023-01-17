@@ -20,7 +20,7 @@ export const Container = styled.footer<{ src: string }>`
     right: 0px;
     top: 0px;
     height: 200px;
-    background-size: contain;
+    background-size: auto;
     background-repeat: no-repeat;
     background-image: url(${(props) => props.src});
     content: "";

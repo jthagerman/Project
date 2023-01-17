@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import hexToRGBA from "@/utils/helpers/hexToRGBA";
 
 export const Container = styled.button<{
   fontSize: string;
@@ -8,6 +9,7 @@ export const Container = styled.button<{
   fontWeight: string;
   width: string;
   padding: string;
+  blur: boolean;
 }>`
   all: unset;
   outline: none;
@@ -25,9 +27,19 @@ export const Container = styled.button<{
   align-items: center;
   justify-content: center;
   transition: opacity 0.25s ease-in-out;
+  cursor: pointer;
   :hover {
     opacity: 0.8;
   }
+
+  ${(props) => {
+    if (props.blur) {
+      return `
+      background-color: ${hexToRGBA(props.bgColor, 0.25)};
+      backdrop-filter: blur(10px);
+      `;
+    }
+  }}
 `;
 
 export const Text = styled.span``;

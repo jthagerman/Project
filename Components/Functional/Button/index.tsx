@@ -10,6 +10,7 @@ export default function Button({
   width = "100%",
   padding = "0px 0px 0px 0px",
   type = "button",
+  blur = false,
 }: {
   children: React.ReactNode;
   icon?: React.ReactNode;
@@ -21,6 +22,7 @@ export default function Button({
   width?: string;
   padding?: string;
   type?: "button" | "submit" | "reset" | undefined;
+  blur?: boolean;
 }) {
   return (
     <Container
@@ -32,6 +34,7 @@ export default function Button({
       fontWeight={fontWeight}
       padding={padding}
       type={type}
+      blur={blur}
     >
       <Row>
         {icon && icon}
