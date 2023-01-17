@@ -19,7 +19,7 @@ export const Container = styled.button<{
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
   cursor: pointer;
-  diplay: flex;
+  display: flex;
   flex-direction: row;
   gap: 0px 10px;
   align-items: center;

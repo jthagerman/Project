@@ -62,11 +62,11 @@ export default function FAQs({
           );
         })}
       </List>
-      <Preview key={selected.question}>
-        <Title>{selected.question}</Title>
-        <Description>{selected.answer}</Description>
+      <Preview key={selected?.question}>
+        <Title>{selected?.question}</Title>
+        <Description>{selected?.answer}</Description>
         <ThumbWrapper>
-          <Thumbnail src={selected.thumbnail} alt={selected.question} />
+          <Thumbnail src={selected?.thumbnail} alt={selected?.question} />
         </ThumbWrapper>
         <Button>Read More</Button>
       </Preview>
