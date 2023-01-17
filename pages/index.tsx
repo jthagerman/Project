@@ -9,10 +9,10 @@ import FAQs from "@/Components/Functional/FAQ";
 import axios from "axios";
 import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries";
 import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
-
-// import { faker } from '@faker-js/faker/locale/de';
+import Footer from "@/Components/Functional/Footer";
 
 export default function Home({ time, parts, knowledge_bank }: any) {
+
   return (
     <>
       <Head>
@@ -23,6 +23,7 @@ export default function Home({ time, parts, knowledge_bank }: any) {
         <FAQs data={knowledge_bank} />
         <DragyAdvertisement />
         <RecommendedPart {...parts} />
+        <Footer />
       </div>
     </>
   );
