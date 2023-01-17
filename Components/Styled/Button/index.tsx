@@ -7,10 +7,12 @@ export const Container = styled.button<{
   height: string;
   fontWeight: string;
   width: string;
+  padding: string;
 }>`
   all: unset;
   outline: none;
   font-size: ${(props) => props.fontSize};
+  padding: ${(props) => props.padding};
   background-color: ${(props) => props.bgColor};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
