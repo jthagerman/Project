@@ -22,7 +22,7 @@ export default function Home({ time, parts, knowledge_bank }: any) {
           <VerticalSpacer size="60px" />
           <DragyAdvertisement />
           <VerticalSpacer size="20px" />
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>{ parts.map((part:any) => <RecommendedPart {...part } />)}</div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>{ parts.map((part:any) => <RecommendedPart key={Math.random()} {...part } />)}</div>
           <VerticalSpacer size="20px" />
           <FAQs data={knowledge_bank} />
           <VerticalSpacer size="60px" />
