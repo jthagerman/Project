@@ -35,7 +35,7 @@ import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries
 
 
 async function getHandler(request: NextApiRequest, response: NextApiResponse) {
-    let { limit = 2, offset = 0 } = request.query;
+    let { limit = 10, offset = 0 } = request.query;
     limit = Number(limit) || 10
     offset = Number(offset) || 0
 
