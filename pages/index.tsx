@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import FAQs from "@/Components/Functional/FAQ";
 import axios from "axios";
 import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries";
+import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
 
 // import { faker } from '@faker-js/faker/locale/de';
 
@@ -20,6 +21,8 @@ export default function Home({ time, parts, knowledge_bank }: any) {
 
       <div>
         <FAQs data={knowledge_bank} />
+        <DragyAdvertisement />
+        <RecommendedPart {...parts} />
       </div>
     </>
   );
