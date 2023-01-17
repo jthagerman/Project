@@ -4,8 +4,6 @@ export const Container = styled.section`
   display: flex;
   flex-direction: row;
   flex-flow: row wrap;
-  width: 100%;
-  max-width: 1200px;
 `;
 
 export const List = styled.div`

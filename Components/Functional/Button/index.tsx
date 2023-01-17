@@ -1,4 +1,4 @@
-import { Container, Text, Row } from "@/Components/Styled/Button";
+import { Container, Text } from "@/Components/Styled/Button";
 export default function Button({
   children,
   icon,
@@ -16,6 +16,8 @@ export default function Button({
   marginLeft,
   marginRight,
   margin,
+  hoverColor,
+  hoverFontColor,
 }: {
   children: React.ReactNode;
   icon?: React.ReactNode;
@@ -33,6 +35,8 @@ export default function Button({
   marginLeft?: string;
   marginRight?: string;
   margin?: string;
+  hoverColor?: string;
+  hoverFontColor?: string;
 }) {
   return (
     <Container
@@ -50,11 +54,11 @@ export default function Button({
       marginLeft={marginLeft}
       marginRight={marginRight}
       margin={margin}
+      hoverColor={hoverColor}
+      hoverFontColor={hoverFontColor}
     >
-      <Row>
-        {icon && icon}
-        <Text>{children}</Text>
-      </Row>
+      {icon && icon}
+      <Text>{children}</Text>
     </Container>
   );
 }

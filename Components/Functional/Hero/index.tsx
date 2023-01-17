@@ -30,16 +30,34 @@ export default function Hero() {
             <Button
               bgColor={theme.colors.white}
               color={theme.colors.white}
+              hoverColor={theme.colors.white}
+              hoverFontColor={theme.colors.blackFont}
               blur={true}
-              icon={<Icon src={Leaderboard.src} height="20px" width="20px" color={theme.colors.white} />}
+              icon={
+                <Icon
+                  src={Leaderboard.src}
+                  height="20px"
+                  width="20px"
+                  color={theme.colors.white}
+                />
+              }
             >
               Leaderboards
             </Button>
             <Button
               bgColor={theme.colors.white}
               color={theme.colors.white}
+              hoverColor={theme.colors.white}
+              hoverFontColor={theme.colors.blackFont}
               blur={true}
-              icon={<Icon src={Tuning.src} height="22px" width="20px" color={theme.colors.white} />}
+              icon={
+                <Icon
+                  src={Tuning.src}
+                  height="22px"
+                  width="20px"
+                  color={theme.colors.white}
+                />
+              }
             >
               Tuning Options
             </Button>
@@ -47,8 +65,17 @@ export default function Hero() {
           <Button
             bgColor={theme.colors.white}
             color={theme.colors.white}
+            hoverColor={theme.colors.white}
+            hoverFontColor={theme.colors.blackFont}
             blur={true}
-            icon={<Icon src={ThumbsUp.src} height="22px" width="20px" color={theme.colors.white} />}
+            icon={
+              <Icon
+                src={ThumbsUp.src}
+                height="22px"
+                width="20px"
+                color={theme.colors.white}
+              />
+            }
           >
             Reccomended Modifications
           </Button>
