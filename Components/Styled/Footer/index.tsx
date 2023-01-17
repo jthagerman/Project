@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import BaseRow from "@/Components/Styled/Row"
 
 export const Container = styled.footer<{ src: string }>`
   max-width: 1440px;
@@ -40,21 +41,12 @@ export const Container = styled.footer<{ src: string }>`
   }
 `;
 
-export const Row = styled.div<{ align: string }>`
+export const Row = styled(BaseRow)`
   width: 100%;
   max-width: 970px;
-  display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: ${(props) => props.align};
   padding: 4rem 0rem;
   overflow: hidden;
-
-  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
 `;
 
 export const Anchor = styled(Link)`

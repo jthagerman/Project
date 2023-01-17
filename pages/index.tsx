@@ -2,6 +2,9 @@ import Head from "next/head";
 import { faker } from "@faker-js/faker";
 import FAQs from "@/Components/Functional/FAQ";
 import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries";
+import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
+import RecommendedPart from "@/Components/Functional/RecommendedPart";
+import Row from "@/Components/Styled/Row"
 
 export default function Home({ time, parts, knowledge_bank }: any) {
   return (
@@ -9,10 +12,7 @@ export default function Home({ time, parts, knowledge_bank }: any) {
       <Head>
         <title>Project</title>
       </Head>
-
-      <div>
-        <FAQs data={knowledge_bank} />
-      </div>
+      <FAQs data={knowledge_bank} />
     </>
   );
 }
@@ -33,8 +33,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      time: new Date().getTime(),
-      parts: createReccomendedPart(),
+      parts: [createReccomendedPart(), createReccomendedPart(), createReccomendedPart()],
       knowledge_bank: knowledge_bank,
     },
     revalidate: 100,

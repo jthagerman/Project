@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import Theme from "@/Theme/theme";
 import { Outfit, Poppins } from "@next/font/google";
+import Footer from "@/Components/Functional/Footer";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <main className={`${outfit.className} ${poppins.className}`}>
       <Theme>
         <Component {...pageProps} />
+        <Footer />
       </Theme>
     </main>
   );
