@@ -30,12 +30,15 @@ import { NextApiRequest, NextApiResponse } from "next";
  * 
  * @apiDescription Returns paginated entries from the knowledge bank sorted by their user interest.
  */
+
+
+
 async function getHandler(request: NextApiRequest, response: NextApiResponse) {
-    let { limit = 10, offset = 0 } = request.query;
+    let { limit = 2, offset = 0 } = request.query;
     limit = Number(limit) || 10
     offset = Number(offset) || 0
-    
-    try { 
+
+    try {
         const results = await KnowledgeBankEntry.find()
             .sort({ 'interest': -1 })
             .limit(Math.min(50, limit as number))
@@ -65,9 +68,9 @@ async function getHandler(request: NextApiRequest, response: NextApiResponse) {
  * @apiDescription Created a new entry in the Knowledge Bank.
  */
 async function postHandler(request: NextApiRequest, response: NextApiResponse) {
-    const { question, answer, thumbnail, blogPost } = request.body 
+    const { question, answer, thumbnail, blogPost } = request.body
     try {
-        const document = omitUndefinedKeys({ question, answer, thumbnail, blogPost})
+        const document = omitUndefinedKeys({ question, answer, thumbnail, blogPost })
         const result = await KnowledgeBankEntry.create(document)
         // TODO: If created, `result._id exists` we should revalidate relevant pages. 
         return response.json({ success: true, data: result })
