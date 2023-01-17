@@ -4,7 +4,7 @@ export default function Icon({
   height = "1rem",
   width = "1rem",
   color = "#000000",
-  src,
+  src
 }: {
   height?: string;
   width?: string;
@@ -12,11 +12,11 @@ export default function Icon({
   src: string;
 }) {
   return (
-    <Container
+    <Container 
       height={height}
       width={width}
       color={color}
       src={src}
-    ></Container>
+    />
   );
 }

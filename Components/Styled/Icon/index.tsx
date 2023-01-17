@@ -5,6 +5,7 @@ export const Container = styled.div<{
   color: string;
   height: string;
   width: string;
+  hover?: string;
 }>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};

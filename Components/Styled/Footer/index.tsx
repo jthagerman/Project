@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export const Container = styled.footer<{ src: string }>`
   max-width: 1440px;
+  width: 100%;
   position: relative;
   background-color: ${(props) => props.theme.colors.blackBackground};
   display: flex;
@@ -20,7 +21,7 @@ export const Container = styled.footer<{ src: string }>`
     right: 0px;
     top: 0px;
     height: 200px;
-    background-size: auto;
+    background-size: contain;
     background-repeat: no-repeat;
     background-image: url(${(props) => props.src});
     content: "";

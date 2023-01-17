@@ -10,6 +10,11 @@ export const Container = styled.button<{
   width: string;
   padding: string;
   blur: boolean;
+  marginTop?: string;
+  marginLeft?: string;
+  marginRight?: string;
+  marginBottom?: string;
+  margin?: string;
 }>`
   all: unset;
   outline: none;
@@ -20,6 +25,11 @@ export const Container = styled.button<{
   height: ${(props) => props.height};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
+  ${(props) => props.marginTop && `margin-top: ${props.marginTop};` };
+  ${(props) => props.marginBottom && `margin-bottom: ${props.marginBottom};` };
+  ${(props) => props.marginLeft && `margin-left: ${props.marginLeft};` };
+  ${(props) => props.marginRight && `margin-right: ${props.marginRight};` };
+  ${(props) => props.margin && `margin: ${props.margin};` };
   cursor: pointer;
   display: flex;
   flex-direction: row;

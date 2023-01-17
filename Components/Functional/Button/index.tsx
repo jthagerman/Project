@@ -11,6 +11,11 @@ export default function Button({
   padding = "0px 0px 0px 0px",
   type = "button",
   blur = false,
+  marginTop,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  margin,
 }: {
   children: React.ReactNode;
   icon?: React.ReactNode;
@@ -23,6 +28,11 @@ export default function Button({
   padding?: string;
   type?: "button" | "submit" | "reset" | undefined;
   blur?: boolean;
+  marginTop?: string;
+  marginBottom?: string;
+  marginLeft?: string;
+  marginRight?: string;
+  margin?: string;
 }) {
   return (
     <Container
@@ -35,6 +45,11 @@ export default function Button({
       padding={padding}
       type={type}
       blur={blur}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
+      marginLeft={marginLeft}
+      marginRight={marginRight}
+      margin={margin}
     >
       <Row>
         {icon && icon}
