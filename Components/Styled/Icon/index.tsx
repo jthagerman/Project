@@ -8,7 +8,7 @@ export const Container = styled.div<{
 }>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  background-color: ${(props) => props.src};
+  background-color: ${(props) => props.color};
   mask-image: url(${(props) => props.src});
   mask-position: center;
   mask-repeat: no-repeat;

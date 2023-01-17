@@ -3,6 +3,7 @@ import apiHandler from "@/utils/api/baseHandler";
 import errorResponse from "@/utils/api/errorResponse";
 import omitUndefinedKeys from "@/utils/database/omitUndefinedKeys";
 import { NextApiRequest, NextApiResponse } from "next";
+import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries";
 
 /**
  * @api {OBJECT} KnowledgeBankEntry KnowledgeBankEntry
@@ -30,17 +31,16 @@ import { NextApiRequest, NextApiResponse } from "next";
  * 
  * @apiDescription Returns paginated entries from the knowledge bank sorted by their user interest.
  */
+
+
+
 async function getHandler(request: NextApiRequest, response: NextApiResponse) {
     let { limit = 10, offset = 0 } = request.query;
     limit = Number(limit) || 10
     offset = Number(offset) || 0
-    
-    try { 
-        const results = await KnowledgeBankEntry.find()
-            .sort({ 'interest': -1 })
-            .limit(Math.min(50, limit as number))
-            .skip(Math.max(0, offset as number))
 
+    try {
+        const results = await getKnowledgeBankEntries(limit, offset)
         return response.json({ success: true, data: results });
     } catch (error: any) {
         return errorResponse(response, error)
@@ -65,9 +65,9 @@ async function getHandler(request: NextApiRequest, response: NextApiResponse) {
  * @apiDescription Created a new entry in the Knowledge Bank.
  */
 async function postHandler(request: NextApiRequest, response: NextApiResponse) {
-    const { question, answer, thumbnail, blogPost } = request.body 
+    const { question, answer, thumbnail, blogPost } = request.body
     try {
-        const document = omitUndefinedKeys({ question, answer, thumbnail, blogPost})
+        const document = omitUndefinedKeys({ question, answer, thumbnail, blogPost })
         const result = await KnowledgeBankEntry.create(document)
         // TODO: If created, `result._id exists` we should revalidate relevant pages. 
         return response.json({ success: true, data: result })

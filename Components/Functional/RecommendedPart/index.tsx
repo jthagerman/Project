@@ -6,7 +6,7 @@ import {
   Price,
   Buttons,
 } from "@/Components/Styled/RecommendedPart";
-import Button from "../Button";
+import Button from "@/Components/Functional/Button";
 import { useTheme } from "styled-components";
 import { UITheme } from "@/types";
 
