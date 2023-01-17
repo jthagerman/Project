@@ -2,6 +2,7 @@ import Head from "next/head";
 import { faker } from "@faker-js/faker";
 import FAQs from "@/Components/Functional/FAQ";
 import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries";
+import Hero from "@/Components/Functional/Hero";
 
 export default function Home({ time, parts, knowledge_bank }: any) {
   return (
@@ -11,6 +12,7 @@ export default function Home({ time, parts, knowledge_bank }: any) {
       </Head>
 
       <div>
+        <Hero />
         <FAQs data={knowledge_bank} />
       </div>
     </>
