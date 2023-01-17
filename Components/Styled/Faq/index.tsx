@@ -6,7 +6,6 @@ export const Container = styled.section`
   flex-flow: row wrap;
   width: 100%;
   max-width: 1200px;
-  height: 775px;
 `;
 
 export const List = styled.div`
@@ -19,10 +18,8 @@ export const List = styled.div`
   gap: 1.2rem;
 `;
 export const Preview = styled.div`
-  overflow: hidden;
   flex: 1;
   margin: 1rem 2rem;
-  max-height: calc(100% - 2rem);
   min-width: 380px;
   display: grid;
   grid-template-columns: 1fr;
@@ -61,7 +58,7 @@ export const ThumbWrapper = styled.div`
 export const Thumbnail = styled.img`
   min-width: 0px;
   max-width: 100%;
-  height: auto;
+  margin-top: 1.25rem;
 `;
 
 export const Item = styled.button<{ selected: boolean }>`

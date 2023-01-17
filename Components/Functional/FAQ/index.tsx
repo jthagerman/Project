@@ -68,7 +68,7 @@ export default function FAQs({
         <ThumbWrapper>
           <Thumbnail src={selected?.thumbnail} alt={selected?.question} />
         </ThumbWrapper>
-        <Button>Read More</Button>
+        <Button marginTop="1.25rem">Read More</Button>
       </Preview>
     </Container>
   );

@@ -7,6 +7,7 @@ export const Container = styled.section<{ src: string; scribble: string }>`
   background-repeat: no-repeat;
   background-size: cover;
   max-width: 1440px;
+  width: 100%;
   background-position: center;
   color: ${(props) => props.theme.colors.white};
   position: relative;

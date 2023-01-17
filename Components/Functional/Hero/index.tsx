@@ -24,13 +24,14 @@ export default function Hero() {
         <SubHeading>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </SubHeading>
-        <Title>Make your driving more exciting</Title>
+        <Title>Lorem ipsum dolor sit amet elit</Title>
         <Buttons>
           <Row>
             <Button
               bgColor={theme.colors.white}
-              color={theme.colors.blackFont}
-              icon={<Icon src={Leaderboard.src} height="20px" width="20px" />}
+              color={theme.colors.white}
+              blur={true}
+              icon={<Icon src={Leaderboard.src} height="20px" width="20px" color={theme.colors.white} />}
             >
               Leaderboards
             </Button>
@@ -38,14 +39,7 @@ export default function Hero() {
               bgColor={theme.colors.white}
               color={theme.colors.white}
               blur={true}
-              icon={
-                <Icon
-                  src={Tuning.src}
-                  color={theme.colors.white}
-                  height="22px"
-                  width="20px"
-                />
-              }
+              icon={<Icon src={Tuning.src} height="22px" width="20px" color={theme.colors.white} />}
             >
               Tuning Options
             </Button>
@@ -54,14 +48,7 @@ export default function Hero() {
             bgColor={theme.colors.white}
             color={theme.colors.white}
             blur={true}
-            icon={
-              <Icon
-                src={ThumbsUp.src}
-                color={theme.colors.white}
-                height="24px"
-                width="24px"
-              />
-            }
+            icon={<Icon src={ThumbsUp.src} height="22px" width="20px" color={theme.colors.white} />}
           >
             Reccomended Modifications
           </Button>
