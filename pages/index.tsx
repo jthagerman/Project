@@ -6,8 +6,7 @@ import RecommendedPart from "@/Components/Functional/RecommendedPart";
 import { faker } from "@faker-js/faker";
 import dynamic from "next/dynamic";
 import Footer from "@/Components/Functional/Footer";
-
-// import { faker } from '@faker-js/faker/locale/de';
+import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
 
 export default function Home({ time, parts }: any) {
   return (
@@ -17,7 +16,8 @@ export default function Home({ time, parts }: any) {
       </Head>
 
       <div>
-        {/* <RecommendedPart {...parts} /> */}
+        <DragyAdvertisement />
+        <RecommendedPart {...parts} />
         <Footer />
       </div>
     </>
