@@ -1,15 +1,7 @@
 import Head from "next/head";
-import Button from "@/Components/Functional/Button";
-import Icon from "@/Components/Functional/Icon";
-import tuning from "public/images/icons/tuning.svg";
-import RecommendedPart from "@/Components/Functional/RecommendedPart";
 import { faker } from "@faker-js/faker";
-import dynamic from "next/dynamic";
 import FAQs from "@/Components/Functional/FAQ";
-import axios from "axios";
 import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries";
-
-// import { faker } from '@faker-js/faker/locale/de';
 
 export default function Home({ time, parts, knowledge_bank }: any) {
   return (

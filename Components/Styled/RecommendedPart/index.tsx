@@ -17,7 +17,6 @@ export const Thumbnail = styled.img`
   height: 214px;
   align-self: center;
   justify-self: center;
-  user-drag: none;
   margin: 11px 0px;
 `;
 

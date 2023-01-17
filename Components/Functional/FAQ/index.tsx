@@ -9,9 +9,9 @@ import {
   Item,
 } from "@/Components/Styled/Faq";
 import { useState } from "react";
-import Button from "../Button";
-import Icon from "../Icon";
-import rightArrow from "public/images/icons/rightChevron.svg";
+import Button from "@/Components/Functional/Button";
+import Icon from "@/Components/Functional/Icon";
+import rightArrow from "@/public/images/icons/rightChevron.svg";
 import { useTheme } from "styled-components";
 import { UITheme } from "@/types";
 
