@@ -3,6 +3,7 @@ import apiHandler from "@/utils/api/baseHandler";
 import errorResponse from "@/utils/api/errorResponse";
 import omitUndefinedKeys from "@/utils/database/omitUndefinedKeys";
 import { NextApiRequest, NextApiResponse } from "next";
+import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries";
 
 /**
  * @api {OBJECT} KnowledgeBankEntry KnowledgeBankEntry
@@ -39,11 +40,7 @@ async function getHandler(request: NextApiRequest, response: NextApiResponse) {
     offset = Number(offset) || 0
 
     try {
-        const results = await KnowledgeBankEntry.find()
-            .sort({ 'interest': -1 })
-            .limit(Math.min(50, limit as number))
-            .skip(Math.max(0, offset as number))
-
+        const results = await getKnowledgeBankEntries(limit, offset)
         return response.json({ success: true, data: results });
     } catch (error: any) {
         return errorResponse(response, error)

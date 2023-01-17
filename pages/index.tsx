@@ -12,7 +12,6 @@ import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries
 // import { faker } from '@faker-js/faker/locale/de';
 
 export default function Home({ time, parts, knowledge_bank }: any) {
-  console.log(knowledge_bank);
   return (
     <>
       <Head>
@@ -31,7 +30,6 @@ export async function getStaticProps() {
 
   const knowledge_bank = await getKnowledgeBankEntries(10, 0);
 
-  console.log(knowledge_bank, Array.isArray(knowledge_bank));
   function createReccomendedPart() {
     return {
       name: faker.commerce.product(),
@@ -45,7 +43,7 @@ export async function getStaticProps() {
     props: {
       time: new Date().getTime(),
       parts: createReccomendedPart(),
-      knowledge_bank: JSON.parse(JSON.stringify(knowledge_bank)) ?? [],
+      knowledge_bank: knowledge_bank,
     },
     revalidate: 100,
   };
