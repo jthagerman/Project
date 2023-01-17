@@ -43,7 +43,7 @@ export default function FAQs({
           return (
             <Item
               key={el._id}
-              selected={selected.question === el.question}
+              selected={selected?.question === el?.question}
               onClick={() => setSelected(el)}
             >
               <span>{el.question}</span>
@@ -53,7 +53,7 @@ export default function FAQs({
                 height="16px"
                 width="8px"
                 color={
-                  selected.question === el.question
+                  selected?.question === el?.question
                     ? theme.colors.blackFont
                     : theme.colors.gray
                 }
