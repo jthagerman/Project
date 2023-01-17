@@ -20,6 +20,7 @@ export const Container = styled.button<{
   height: ${(props) => props.height};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   gap: 0px 10px;
