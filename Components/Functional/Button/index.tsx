@@ -8,6 +8,8 @@ export default function Button({
   height = "3.0635rem",
   fontWeight = "600",
   width = "100%",
+  padding = "0px 0px 0px 0px",
+  type = "button",
 }: {
   children: React.ReactNode;
   icon?: React.ReactNode;
@@ -17,6 +19,8 @@ export default function Button({
   height?: string;
   fontWeight?: string;
   width?: string;
+  padding?: string;
+  type?: "button" | "submit" | "reset" | undefined;
 }) {
   return (
     <Container
@@ -26,6 +30,8 @@ export default function Button({
       height={height}
       width={width}
       fontWeight={fontWeight}
+      padding={padding}
+      type={type}
     >
       <Row>
         {icon && icon}

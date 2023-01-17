@@ -19,10 +19,10 @@ const theme: any = {
 
   fonts: {
     fontSizes: {
-      regular: "1rem",
-      header: "3.75rem",
-      large: "1.25rem",
-      emphasized: "1.125rem",
+      regular: "1rem", //16px
+      header: "3.75rem", //60px
+      large: "1.25rem", //20px
+      emphasized: "1.125rem", //18px
     },
     fontWeights: {
       thin: 300,
@@ -37,9 +37,9 @@ const theme: any = {
   },
   buttons: {
     heights: {
-      small: "2.5rem",
-      normal: "3.0625rem",
-      large: "3.1875rem",
+      small: "2.5rem", //40px
+      normal: "3.0625rem", //49px
+      large: "3.1875rem", //51px
     },
   },
   breakpoints: {
@@ -54,7 +54,7 @@ const theme: any = {
 const GlobalStyle = createGlobalStyle<{ theme: UITheme }>`
     html {
         max-width: 100vw;
-        background-color: #f6f6f5;
+        background-color: #F9F9F9;
         font-family: 'Outfit'
     }
     body {
@@ -68,6 +68,10 @@ const GlobalStyle = createGlobalStyle<{ theme: UITheme }>`
     h1 {
         font-size: ${(props) => props.theme.fonts.fontSizes.header};
         font-weight: ${(props) => props.theme.fonts.fontWeights.bold};
+    }
+
+    img {
+      user-drag: none;
     }
 
 `;
