@@ -1,14 +1,13 @@
 import apiHandler from "@/utils/api/baseHandler";
 import errorResponse from "@/utils/api/errorResponse";
-import omitUndefinedKeys from "@/utils/database/omitUndefinedKeys";
 import { NextApiRequest, NextApiResponse } from "next";
-import { getUser } from "@/data/fetchers/GetUser";
 import User from "@/data/mongoose/models/User";
-
-//FOR TESTING SO I CAN VISUALLY SEE THINGS!
+import checkAuth from "@/utils/helpers/checkAuth";
 
 async function getHandler(request: NextApiRequest, response: NextApiResponse) {
+  const auth = request.headers.authorization;
   try {
+    if (!checkAuth(auth ?? "")) throw "Not Authorized";
     const results = await User.find();
     return response.json({ success: true, data: results });
   } catch (error: any) {

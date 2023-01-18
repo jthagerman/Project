@@ -1,9 +1,11 @@
-import KnowledgeBankEntry from "@/data/mongoose/models/KnowledgeBankEntry";
+
 import apiHandler from "@/utils/api/baseHandler";
 import errorResponse from "@/utils/api/errorResponse";
 import omitUndefinedKeys from "@/utils/database/omitUndefinedKeys";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries";
+import checkAuth from "@/utils/helpers/checkAuth";
+import KnowledgeBankEntry from "@/data/mongoose/models/KnowledgeBankEntry";
 
 /**
  * @api {OBJECT} KnowledgeBankEntry KnowledgeBankEntry
@@ -66,11 +68,16 @@ async function getHandler(request: NextApiRequest, response: NextApiResponse) {
  */
 async function postHandler(request: NextApiRequest, response: NextApiResponse) {
     const { question, answer, thumbnail, blogPost } = request.body
+    const auth = request.headers.authorization
+
     try {
+        if (!checkAuth(auth ?? '')) throw 'Not Authorized'
         const document = omitUndefinedKeys({ question, answer, thumbnail, blogPost })
         const result = await KnowledgeBankEntry.create(document)
         // TODO: If created, `result._id exists` we should revalidate relevant pages. 
-        return response.json({ success: true, data: result })
+        return response.json({
+            success: true, data: result
+        })
     } catch (error: any) {
         return errorResponse(response, error)
     }

@@ -25,11 +25,9 @@ import jwt from "jsonwebtoken";
  * @apiDescription Returns paginated entries from the knowledge bank sorted by their user interest.
  */
 
-const TEMPKEY = "THIS IS A TEST";
 async function getHandler(request: NextApiRequest, response: NextApiResponse) {
   let { email, password } = request.body;
 
-  console.log(password);
   try {
     const results = await getUser(email, password);
     if (Object.keys(results).length === 0) throw "Invalid Login";
@@ -41,7 +39,7 @@ async function getHandler(request: NextApiRequest, response: NextApiResponse) {
             email: results.email,
             admin: results.type === "admin",
           },
-          TEMPKEY
+          process.env.JWT!
         ),
       },
     });
