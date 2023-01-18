@@ -6,7 +6,8 @@ export async function getUser(email: string, password: string) {
   try {
     if (await ensureConnection()) {
       const result = await User.findOne({ email: email });
-      if (!checkPassword(password, result.password)) throw "Invalid Password";
+      if (!(await checkPassword(password, result.password)))
+        throw "Invalid Password";
       else if (result) return result;
       else throw "Invalid User";
     } else throw "Error Connecting To DB";

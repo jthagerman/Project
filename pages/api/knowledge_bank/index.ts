@@ -68,10 +68,11 @@ async function getHandler(request: NextApiRequest, response: NextApiResponse) {
  */
 async function postHandler(request: NextApiRequest, response: NextApiResponse) {
     const { question, answer, thumbnail, blogPost } = request.body
-    const auth = request.headers.authorization
+    const auth = request.headers.authorization ?? ''
+
 
     try {
-        if (!checkAuth(auth ?? '')) throw 'Not Authorized'
+        if (!await checkAuth(auth, 'publishArticles')) throw 'Not Authorized'
         const document = omitUndefinedKeys({ question, answer, thumbnail, blogPost })
         const result = await KnowledgeBankEntry.create(document)
         // TODO: If created, `result._id exists` we should revalidate relevant pages. 
@@ -84,3 +85,6 @@ async function postHandler(request: NextApiRequest, response: NextApiResponse) {
 }
 
 export default apiHandler(true, { GET: getHandler, POST: postHandler })
+
+
+

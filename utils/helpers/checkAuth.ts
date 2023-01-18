@@ -1,11 +1,24 @@
 
 import jwt from "jsonwebtoken";
-export default function checkAuth(auth: string): boolean {
+import User from "@/data/mongoose/models/User";
+import ensureConnection from "@/utils/database/connection";
+
+export default async function checkAuth(auth: string, key?: string): Promise<boolean> {
     try {
-        const decoded: any = jwt.verify((auth ?? '').toString().slice(7), process.env.JWT!)
-        return decoded?.admin ?? false
+        if (!auth || !auth.startsWith("Bearer ")) return false
+
+        const decoded: any = jwt.verify((auth ?? '').toString().slice(7), process.env.JWT)
+        const { aud, iss, sub } = decoded ?? ''
+
+        if (!sub || iss !== '3point3performance.com' || aud !== "3point3performance.com") return false
+
+        if (await ensureConnection()) {
+            const user = await User.findOne({ _id: sub });
+            if (user && !key) return true
+            else if (user && key && user.permissions[key]) return true
+        }
+        return false
     } catch {
         return false
     }
-
 }
