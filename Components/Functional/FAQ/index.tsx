@@ -7,6 +7,9 @@ import {
   Thumbnail,
   ThumbWrapper,
   Item,
+  Hidden,
+  ItemWrapper,
+  Arrow,
 } from "@/Components/Styled/Faq";
 import { useState } from "react";
 import Button from "@/Components/Functional/Button";
@@ -15,60 +18,85 @@ import rightArrow from "@/public/images/icons/rightChevron.svg";
 import { useTheme } from "styled-components";
 import { UITheme } from "@/types";
 
-export default function FAQs({
-  data,
-}: {
-  data: {
-    _id: string;
-    question: string;
-    answer: string;
-    thumbnail: string;
-    blogPost: string;
-    interest: number;
-    _v: number;
-  }[];
-}) {
+interface faqItem {
+  _id: string;
+  question: string;
+  answer: string;
+  thumbnail: string;
+  blogPost: string;
+  interest: number;
+  _v: number;
+}
+
+export default function FAQs({ data }: { data: faqItem[] }) {
   const theme = useTheme() as UITheme;
-  const [selected, setSelected] = useState(() => {
+  const [mostRecentIndex, setMostRecentIndex] = useState<number>(() => 0);
+  const [selected, setSelected] = useState<any>(() => {
     return Array.isArray(data)
-      ? data[0]
-      : { id_: "", question: "", answer: "", thumbail: "", thumbnail: "" };
+      ? [data[0]]
+      : [{ id_: "", question: "", answer: "", thumbnail: "", _id: "" }];
   });
+
+  const PreviewBody = ({ el }: { el: faqItem }) => {
+    return (
+      <>
+        <Title>{el?.question}</Title>
+        <Description>{el?.answer}</Description>
+        <ThumbWrapper>
+          <Thumbnail src={el?.thumbnail} alt={el?.question} />
+        </ThumbWrapper>
+        <Button marginTop="1.25rem">Read More</Button>
+      </>
+    );
+  };
 
   if (!Array.isArray(data)) return null;
   return (
     <Container>
       <List>
-        {data.map((el) => {
+        {data.map((el: faqItem, index: number) => {
           return (
-            <Item
-              key={el._id}
-              selected={selected?.question === el?.question}
-              onClick={() => setSelected(el)}
-            >
-              <span>{el.question}</span>
-
-              <Icon
-                src={rightArrow.src}
-                height="16px"
-                width="8px"
-                color={
-                  selected?.question === el?.question
-                    ? theme.colors.blackFont
-                    : theme.colors.gray
-                }
-              />
-            </Item>
+            <ItemWrapper key={el._id}>
+              <Item
+                selected={selected.includes(el)}
+                onClick={() => {
+                  setMostRecentIndex(index);
+                  setSelected((prev: faqItem[]) => {
+                    if (selected.includes(el)) {
+                      const index = selected.indexOf(el);
+                      if (index > -1) {
+                        return [
+                          ...prev.slice(0, index),
+                          ...prev.slice(index + 1),
+                        ];
+                      }
+                    } else return [...prev, el];
+                  });
+                }}
+              >
+                <span>{el.question}</span>
+                <Arrow selected={selected.includes(el)}>
+                  <Icon
+                    src={rightArrow.src}
+                    height="16px"
+                    width="8px"
+                    color={
+                      selected.includes(el)
+                        ? theme.colors.blackFont
+                        : theme.colors.gray
+                    }
+                  />
+                </Arrow>
+              </Item>
+              <Hidden hidden={!selected.includes(el)}>
+                <PreviewBody el={el} />
+              </Hidden>
+            </ItemWrapper>
           );
         })}
       </List>
       <Preview key={selected?.question}>
-        <Title>{selected?.question}</Title>
-        <Description>{selected?.answer}</Description>
-        <ThumbWrapper>
-          <Thumbnail src={selected?.thumbnail} alt={selected?.question} />
-        </ThumbWrapper>
-        <Button marginTop="1.25rem">Read More</Button>
+        <PreviewBody el={data[mostRecentIndex]} />
       </Preview>
     </Container>
   );
