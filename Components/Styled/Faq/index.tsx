@@ -32,14 +32,14 @@ export const Preview = styled.div`
     display: none;
   }
 
-  @keyframes fadeInFAQ {
+  /* @keyframes fadeInFAQ {
     0% {
       opacity: 0;
     }
     100% {
       opacity: 1;
     }
-  }
+  } */
 `;
 export const Title = styled.div`
   font-weight: ${(props) => props.theme.fonts.fontWeights.semibold};
@@ -57,6 +57,8 @@ export const ThumbWrapper = styled.div`
   align-self: center;
   display: grid;
   place-items: center;
+
+  margin: auto;
 `;
 export const Thumbnail = styled.img`
   min-width: 0px;
@@ -64,7 +66,7 @@ export const Thumbnail = styled.img`
   margin-top: 1.25rem;
 `;
 
-export const Item = styled.button<{ selected: boolean }>`
+export const Item = styled.button<{ selected: boolean; indexSelect: boolean }>`
   all: unset;
   max-width: calc(525px - 1.5rem);
   padding: 0.75rem 1rem;
@@ -74,7 +76,8 @@ export const Item = styled.button<{ selected: boolean }>`
   grid-template-columns: 1fr min-content;
   background-color: ${(props) => props.theme.colors.white};
   color: ${(props) =>
-    props.selected ? props.theme.colors.blackFont : props.theme.colors.gray};
+    props.indexSelect ? props.theme.colors.blackFont : props.theme.colors.gray};
+
   :hover {
     color: ${(props) => props.theme.colors.blackFont};
   }
@@ -82,6 +85,11 @@ export const Item = styled.button<{ selected: boolean }>`
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     max-width: unset;
     flex: 1;
+
+    :hover {
+      color: inherit;
+      color: inherit;
+    }
   }
 `;
 

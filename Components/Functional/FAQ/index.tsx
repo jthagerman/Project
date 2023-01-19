@@ -31,10 +31,20 @@ interface faqItem {
 export default function FAQs({ data }: { data: faqItem[] }) {
   const theme = useTheme() as UITheme;
   const [mostRecentIndex, setMostRecentIndex] = useState<number>(() => 0);
-  const [selected, setSelected] = useState<any>(() => {
+  const [selected, setSelected] = useState<faqItem[]>(() => {
     return Array.isArray(data)
       ? [data[0]]
-      : [{ id_: "", question: "", answer: "", thumbnail: "", _id: "" }];
+      : [
+          {
+            question: "",
+            answer: "",
+            thumbnail: "",
+            _id: "",
+            interest: 0,
+            blogPost: "",
+            _v: 0,
+          },
+        ];
   });
 
   const PreviewBody = ({ el }: { el: faqItem }) => {
@@ -59,10 +69,11 @@ export default function FAQs({ data }: { data: faqItem[] }) {
             <ItemWrapper key={el._id}>
               <Item
                 selected={selected.includes(el)}
+                indexSelect={index === mostRecentIndex}
                 onClick={() => {
                   setMostRecentIndex(index);
-                  setSelected((prev: faqItem[]) => {
-                    if (selected.includes(el)) {
+                  setSelected((prev: faqItem[]): any => {
+                    if (prev.includes(el)) {
                       const index = selected.indexOf(el);
                       if (index > -1) {
                         return [
@@ -80,11 +91,7 @@ export default function FAQs({ data }: { data: faqItem[] }) {
                     src={rightArrow.src}
                     height="16px"
                     width="8px"
-                    color={
-                      selected.includes(el)
-                        ? theme.colors.blackFont
-                        : theme.colors.gray
-                    }
+                    color={theme.colors.gray}
                   />
                 </Arrow>
               </Item>
@@ -95,7 +102,7 @@ export default function FAQs({ data }: { data: faqItem[] }) {
           );
         })}
       </List>
-      <Preview key={selected?.question}>
+      <Preview key={selected[0]?.question}>
         <PreviewBody el={data[mostRecentIndex]} />
       </Preview>
     </Container>
