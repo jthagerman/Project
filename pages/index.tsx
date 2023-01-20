@@ -6,8 +6,7 @@ import Hero from "@/Components/Functional/Hero";
 import RecommendedPart from "@/Components/Functional/RecommendedPart";
 import Footer from "@/Components/Functional/Footer";
 import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
-import { Page, Content, VerticalSpacer } from "@/Components/Styled/Page"
-
+import { Page, Content, VerticalSpacer } from "@/Components/Styled/Page";
 
 export default function Home({ time, parts, knowledge_bank }: any) {
   return (
@@ -15,16 +14,26 @@ export default function Home({ time, parts, knowledge_bank }: any) {
       <Head>
         <title>Project</title>
       </Head>
-      
+
       <Page>
         <Hero />
         <Content>
           <VerticalSpacer size="60px" />
           <DragyAdvertisement />
           <VerticalSpacer size="20px" />
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>{ parts.map((part:any) => <RecommendedPart key={Math.random()} {...part } />)}</div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
+          >
+            {parts.map((part: any) => (
+              <RecommendedPart key={Math.random()} {...part} />
+            ))}
+          </div>
           <VerticalSpacer size="20px" />
-          <FAQs data={knowledge_bank} />
+          <FAQs faqs={knowledge_bank} />
           <VerticalSpacer size="60px" />
         </Content>
         <Footer />
@@ -50,7 +59,11 @@ export async function getStaticProps() {
   return {
     props: {
       time: new Date().getTime(),
-      parts: [createReccomendedPart(),createReccomendedPart(),createReccomendedPart()],
+      parts: [
+        createReccomendedPart(),
+        createReccomendedPart(),
+        createReccomendedPart(),
+      ],
       knowledge_bank: knowledge_bank,
     },
     revalidate: 100,
