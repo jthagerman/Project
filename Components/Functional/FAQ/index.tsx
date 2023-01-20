@@ -25,6 +25,13 @@ const Container = styled.div`
   grid-gap: 20px;
   height: calc((56px + 20px) * 10);
   position: relative;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    grid-template-columns: max-content;
+    height: auto;
+    grid-auto-rows: unset;
+    width: 100%;
+  }
 `;
 
 const Question = styled.div`
@@ -51,8 +58,13 @@ const QuestionLabel = styled.span<{ active: boolean }>`
   padding: 15px 20px 15px 30px;
 `;
 
-const AnswerPlaceholder = styled.div`
+const AnswerPlaceholder = styled.div<{ active: boolean }>`
   width: 400px;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    width: 100%;
+    display: ${(props) => (props.active ? "block" : "none")};
+  }
 `;
 
 const Answer = styled.div<{ active: boolean }>`
@@ -61,6 +73,18 @@ const Answer = styled.div<{ active: boolean }>`
   right: 0;
   width: 400px;
   opacity: ${(props) => (props.active ? 1 : 0)};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    width: 100vw;
+    position: unset;
+    top: unset;
+    right: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+  }
 `;
 
 const AnswerLabel = styled.h3`
@@ -122,11 +146,12 @@ export default function FAQs({ faqs }: FAQProps) {
         return (
           <>
             <FunctionalQuestion
+              key={faq._id + faq.question}
               onClick={() => setSelected(faq._id)}
               question={faq.question}
               active={active}
             />
-            <AnswerPlaceholder>
+            <AnswerPlaceholder key={faq._id + "description"} active={active}>
               <Answer active={active}>
                 <AnswerLabel>{faq.question}</AnswerLabel>
                 <AnswerDescription>{faq.answer}</AnswerDescription>
