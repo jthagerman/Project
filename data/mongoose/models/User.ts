@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
+import Permissions from '@/data/mongoose/models/Permissions';
 
 const MODEL_NAME = "user"
 const schema = new Schema({
@@ -33,12 +34,8 @@ const schema = new Schema({
         default: new Date()
     },
     permissions: {
-        type: Schema.Types.Mixed,
-        required: true,
-        default: {
-            changePassword: true,
-
-        }
+        type: Permissions,
+        requred: false
     }
 })
 

@@ -29,6 +29,7 @@ async function getHandler(request: NextApiRequest, response: NextApiResponse) {
   try {
     const results = await getUser(email, password);
     if (Object.keys(results).length === 0) throw "Invalid Login";
+    else if (results.error) throw results.error;
     return response.json({
       success: true,
       data: {

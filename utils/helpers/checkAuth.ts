@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import User from "@/data/mongoose/models/User";
 import ensureConnection from "@/utils/database/connection";
 
-export default async function checkAuth(auth: string, key?: string): Promise<boolean> {
+export default async function checkAuth(auth: string, key?: any): Promise<boolean> {
     try {
         if (!auth || !auth.startsWith("Bearer ")) return false
 
