@@ -3,18 +3,20 @@ import styled from "styled-components";
 export const Container = styled.section<{ src: string; scribble: string }>`
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url(${(props) => props.src});
-  height: 800px;
+  height: 40vw;
+  min-height: 800px;
+  max-height: 2560px;
   background-repeat: no-repeat;
   background-size: cover;
-  max-width: 1440px;
   width: 100%;
   background-position: center;
   color: ${(props) => props.theme.colors.white};
   position: relative;
-  overflow: hidden;
 
-  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    height: 700px;
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    height: 100vh;
+    min-height: unset;
+    max-height: unset;
   }
 
   ::after {
@@ -30,6 +32,10 @@ export const Container = styled.section<{ src: string; scribble: string }>`
     position: absolute;
     display: inline-block;
     pointer-events: none;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+      bottom: -1px;
+    }
   }
 `;
 
@@ -47,6 +53,9 @@ export const Title = styled.h1`
   }
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     font-size: 60px;
+  }
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    font-size: 40px;
   }
 `;
 export const SubHeading = styled.div`
@@ -73,4 +82,11 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 189px 1rem 0px 1rem;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    margin: 0;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+  }
 `;

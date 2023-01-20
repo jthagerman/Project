@@ -2,52 +2,43 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export const Container = styled.footer<{ src: string }>`
-  max-width: 1440px;
-  width: 100%;
   position: relative;
-  background-color: ${(props) => props.theme.colors.blackBackground};
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   color: ${(props) => props.theme.colors.grayFont};
   font-family: ${(props) => props.theme.fonts.names.poppins};
-  padding: 100px 1rem 3rem 1rem;
-  margin: 50px 0px 0px 0px;
-  overflow: hidden;
+  overflow: show;
+  background-color: ${(props) => props.theme.colors.blackBackground};
 
   ::after {
     content: "";
     left: 0px;
-    right: 0px;
-    top: 0px;
+    right: -1px;
+    top: -1px;
     height: 200px;
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url(${(props) => props.src});
-    content: "";
+    background-position: center top;
     position: absolute;
     display: inline-block;
+    pointer-events: none;
   }
 
   > div:first-child {
     border-bottom: 1px solid ${(props) => props.theme.colors.grayFont};
   }
-
-  @media (min-width: ${(props) => props.theme.breakpoints.laptop}) {
-    padding: 180px 1rem 3rem 1rem;
-  }
-  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    padding: 50px 1rem 3rem 1rem;
-  }
 `;
 
-export const Row = styled.div<{ align: string }>`
+export const Row = styled.div<{ align?: string }>`
   width: 100%;
   max-width: 970px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  align-items: ${(props) => props.align};
+  align-items: ${(props) => props.align ?? "flex-start"};
   padding: 4rem 0rem;
   overflow: hidden;
 
@@ -100,8 +91,12 @@ export const Column = styled.div<{ flex?: string }>`
     max-width: 470px;
     margin: 0.75rem 1rem 0rem 0px;
     padding: 0px 0px 1rem 0px;
-    min-width: 300px;
     line-height: 1.5rem;
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -131,20 +126,44 @@ export const ColumnName = styled.li`
 export const Input = styled.input`
   all: unset;
   margin: 0px;
-  padding 1rem .5rem;
+  padding: 1rem 0.5rem;
   font-size: ${(props) => props.theme.fonts.fontSizes.regular};
 `;
 
 export const InputWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr max-content;
-  align-items: center;
   width: 366px;
-  height: max-content;
-  padding: 0px 5px 0px 5px;
-  box-sizing: border-box;
-  margin: 0px 0px 1rem 0px;
-  height: min-content;
-  overflow: hidden;
   border: 2px solid ${(props) => props.theme.colors.grayFont};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+`;
+
+export const Content = styled.div`
+  max-width: 100vw;
+  margin: 100px 1rem 3rem 1rem;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.laptop}) {
+    margin: 180px 1rem 3rem 1rem;
+  }
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    margin: 50px 1rem 3rem 1rem;
+  }
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+`;
+
+export const ContentRow = styled(Row)`
+  align-items: center;
+  justify-content: center;
 `;
