@@ -103,7 +103,9 @@ export const Answer = styled.div<{
   background-color: #f9f9f9;
 
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    grid-area: auto;
+    grid-area: unset;
+    grid-column-start: 1;
+    grid-column-end: 1;
     display: ${(props) => (!props.mobileActive ? "none" : "grid")};
     grid-auto-rows: min-content;
   }
