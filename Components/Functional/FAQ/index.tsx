@@ -59,11 +59,9 @@ const FunctionalQuestion = ({
 };
 
 export default function FAQs({ faqs }: { faqs: faqItem[] }) {
-  const [mobileSelected, setMobileSelected] = useState<string[]>([
-    faqs[0]?._id,
-  ]);
+  const [mobileSelected, setMobileSelected] = useState<string[]>([""]);
   const [desktopSelected, setDesktopSelected] = useState<string>(
-    () => faqs[0]?._id
+    (faqs[0] ?? {})?._id
   );
 
   if (!Array.isArray(faqs)) return null;
