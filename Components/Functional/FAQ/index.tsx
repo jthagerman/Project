@@ -1,75 +1,142 @@
-import {
-  Container,
-  List,
-  Preview,
-  Title,
-  Description,
-  Thumbnail,
-  ThumbWrapper,
-  Item,
-} from "@/Components/Styled/Faq";
 import { useState } from "react";
-import Button from "@/Components/Functional/Button";
-import Icon from "@/Components/Functional/Icon";
-import rightArrow from "@/public/images/icons/rightChevron.svg";
 import { useTheme } from "styled-components";
 import { UITheme } from "@/types";
+import styled from "styled-components";
+import rightArrow from "@/public/images/icons/rightChevron.svg";
+import Icon from "@/Components/Functional/Icon";
+import Button from "@/Components/Functional/Button";
 
-export default function FAQs({
-  data,
+interface FAQ {
+  _id: string;
+  question: string;
+  answer: string;
+  thumbnail?: string;
+  blogPost?: string;
+}
+
+interface FAQProps {
+  faqs: FAQ[];
+}
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: minmax(380px, 525px) 1fr;
+  grid-auto-rows: 56px;
+  grid-gap: 20px;
+  height: calc((56px + 20px) * 10);
+  position: relative;
+`;
+
+const Question = styled.div`
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 56px;
+  color: ${(props) => props.theme.gray};
+  padding: 0px 15px 0px 0px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  &:hover {
+    background-color: #f8f8f8;
+  }
+`;
+
+const QuestionLabel = styled.span<{ active: boolean }>`
+  color: ${(props) =>
+    props.active ? props.theme.blackFont : props.theme.gray};
+  font-weight: ${(props) => (props.active ? "bold" : "normal")};
+  padding: 15px 20px 15px 30px;
+`;
+
+const AnswerPlaceholder = styled.div`
+  width: 400px;
+`;
+
+const Answer = styled.div<{ active: boolean }>`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  opacity: ${(props) => (props.active ? 1 : 0)};
+`;
+
+const AnswerLabel = styled.h3`
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 170.5%;
+  /* or 27px */
+
+  letter-spacing: -0.005em;
+`;
+
+const AnswerDescription = styled.p`
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 170.5%;
+  /* or 27px */
+
+  letter-spacing: -0.005em;
+
+  color: #000000;
+
+  opacity: 0.6;
+`;
+
+function FunctionalQuestion({
+  question,
+  active,
+  onClick,
 }: {
-  data: {
-    _id: string;
-    question: string;
-    answer: string;
-    thumbnail: string;
-    blogPost: string;
-    interest: number;
-    _v: number;
-  }[];
+  question: string;
+  active: boolean;
+  onClick: () => void;
 }) {
   const theme = useTheme() as UITheme;
-  const [selected, setSelected] = useState(() => {
-    return Array.isArray(data)
-      ? data[0]
-      : { id_: "", question: "", answer: "", thumbail: "", thumbnail: "" };
-  });
 
-  if (!Array.isArray(data)) return null;
+  return (
+    <Question onClick={onClick}>
+      <QuestionLabel active={active}>{question}</QuestionLabel>
+      <Icon
+        src={rightArrow.src}
+        height="16px"
+        width="8px"
+        color={active ? theme.colors.blackFont : theme.colors.gray}
+      />
+    </Question>
+  );
+}
+
+export default function FAQs({ faqs }: FAQProps) {
+  const [selected, setSelected] = useState(faqs[0]?._id);
   return (
     <Container>
-      <List>
-        {data.map((el) => {
-          return (
-            <Item
-              key={el._id}
-              selected={selected?.question === el?.question}
-              onClick={() => setSelected(el)}
-            >
-              <span>{el.question}</span>
-
-              <Icon
-                src={rightArrow.src}
-                height="16px"
-                width="8px"
-                color={
-                  selected?.question === el?.question
-                    ? theme.colors.blackFont
-                    : theme.colors.gray
-                }
-              />
-            </Item>
-          );
-        })}
-      </List>
-      <Preview key={selected?.question}>
-        <Title>{selected?.question}</Title>
-        <Description>{selected?.answer}</Description>
-        <ThumbWrapper>
-          <Thumbnail src={selected?.thumbnail} alt={selected?.question} />
-        </ThumbWrapper>
-        <Button marginTop="1.25rem">Read More</Button>
-      </Preview>
+      {faqs.map((faq: FAQ) => {
+        const active = selected === faq._id;
+        return (
+          <>
+            <FunctionalQuestion
+              onClick={() => setSelected(faq._id)}
+              question={faq.question}
+              active={active}
+            />
+            <AnswerPlaceholder>
+              <Answer active={active}>
+                <AnswerLabel>{faq.question}</AnswerLabel>
+                <AnswerDescription>{faq.answer}</AnswerDescription>
+                {faq.thumbnail && <img src={faq.thumbnail} width={"80%"} />}
+                <Button marginTop="1.25rem">Read More</Button>
+              </Answer>
+            </AnswerPlaceholder>
+          </>
+        );
+      })}
     </Container>
   );
 }
