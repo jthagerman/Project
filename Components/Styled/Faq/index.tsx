@@ -9,8 +9,7 @@ export const Container = styled.section`
   padding: 1rem;
   gap: 20px 4%;
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    grid-template-columns: 1fr;
-    grid-auto-rows: max-content;
+    display: block;
   }
 `;
 
@@ -35,6 +34,7 @@ export const Question = styled.div<{ active: boolean; desktopActive: boolean }>`
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    margin: 18px 0px;
     color: ${(props) =>
       props.active ? props.theme.colors.blackFont : props.theme.colors.gray};
   }
@@ -104,9 +104,8 @@ export const Answer = styled.div<{
 
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     grid-area: unset;
-    grid-column-start: 1;
-    grid-column-end: 1;
     display: ${(props) => (!props.mobileActive ? "none" : "grid")};
     grid-auto-rows: min-content;
+    margin: 20px 0px;
   }
 `;
