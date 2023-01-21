@@ -98,7 +98,6 @@ export const Answer = styled.div<{
   flex-direction: column;
   grid-area: 1 / 2 / 11 / 2;
   grid-template-rows: min-content min-content 1fr max-content;
-  max-height: min-content;
   overflow: hidden;
   background-color: #f9f9f9;
 
