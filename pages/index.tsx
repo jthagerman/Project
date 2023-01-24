@@ -6,8 +6,8 @@ import Hero from "@/Components/Functional/Hero";
 import RecommendedPart from "@/Components/Functional/RecommendedPart";
 import Footer from "@/Components/Functional/Footer";
 import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
-import { Page, Content, VerticalSpacer } from "@/Components/Styled/Page"
-
+import { Page, Content, VerticalSpacer } from "@/Components/Styled/Page";
+import Heading from "@/Components/Functional/Heading";
 
 export default function Home({ time, parts, knowledge_bank }: any) {
   return (
@@ -15,15 +15,37 @@ export default function Home({ time, parts, knowledge_bank }: any) {
       <Head>
         <title>Project</title>
       </Head>
-      
+
       <Page>
         <Hero />
         <Content>
+          <Heading
+            heading="Platform world-record holder"
+            subheading="The world’s fastest 3.3T in the 1/4th mile."
+          />
           <VerticalSpacer size="60px" />
           <DragyAdvertisement />
           <VerticalSpacer size="20px" />
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>{ parts.map((part:any) => <RecommendedPart key={Math.random()} {...part } />)}</div>
+          <Heading
+            heading="Recommnended Parts"
+            subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
+          >
+            {parts.map((part: any) => (
+              <RecommendedPart key={Math.random()} {...part} />
+            ))}
+          </div>
           <VerticalSpacer size="20px" />
+          <Heading
+            heading="Knowledge Bank"
+            subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          />
           <FAQs data={knowledge_bank} />
           <VerticalSpacer size="60px" />
         </Content>
@@ -50,7 +72,11 @@ export async function getStaticProps() {
   return {
     props: {
       time: new Date().getTime(),
-      parts: [createReccomendedPart(),createReccomendedPart(),createReccomendedPart()],
+      parts: [
+        createReccomendedPart(),
+        createReccomendedPart(),
+        createReccomendedPart(),
+      ],
       knowledge_bank: knowledge_bank,
     },
     revalidate: 100,
