@@ -1,0 +1,18 @@
+import ensureConnection from "@/utils/database/connection";
+import User from "@/data/mongoose/models/User";
+import checkPassword from "@/utils/helpers/checkPassword";
+
+export async function getUser(email: string, password: string) {
+  try {
+    if (await ensureConnection()) {
+      const result = await User.findOne({ email: email });
+      if (result) {
+        if (!(await checkPassword(password, result?.password)))
+          throw "Invalid Password";
+        else return result;
+      } else throw "Invalid User";
+    } else throw "Error Connecting To DB";
+  } catch (error) {
+    return { error: error };
+  }
+}
