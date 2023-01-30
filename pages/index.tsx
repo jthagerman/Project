@@ -1,13 +1,12 @@
 import Head from "next/head";
 import { faker } from "@faker-js/faker";
-import FAQs from "@/Components/Functional/FAQ";
 import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries";
-import Hero from "@/Components/Functional/Hero";
-import RecommendedPart from "@/Components/Functional/RecommendedPart";
 import Footer from "@/Components/Functional/Footer";
+import Hero from "@/Components/Functional/Hero";
 import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
 import { Page, Content, VerticalSpacer } from "@/Components/Styled/Page";
 import Heading from "@/Components/Functional/Heading";
+import ChartSection from "@/Components/Functional/ChartSection";
 
 export default function Home({ time, parts, knowledge_bank }: any) {
   return (
@@ -24,6 +23,7 @@ export default function Home({ time, parts, knowledge_bank }: any) {
             subheading="The world’s fastest 3.3T in the 1/4th mile."
           />
           <VerticalSpacer size="60px" />
+          <ChartSection />
           <DragyAdvertisement />
           <VerticalSpacer size="20px" />
           <Heading

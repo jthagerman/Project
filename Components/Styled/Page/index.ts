@@ -8,8 +8,6 @@ export const Page = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 1440px;
 `
 
 export const Content = styled.main`
