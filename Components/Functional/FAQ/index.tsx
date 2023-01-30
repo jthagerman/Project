@@ -1,12 +1,13 @@
 import {
   Container,
-  List,
-  Preview,
-  Title,
-  Description,
+  AnswerLabel,
+  AnswerDescription,
   Thumbnail,
   ThumbWrapper,
-  Item,
+  Answer,
+  Question,
+  Arrow,
+  QuestionLabel,
 } from "@/Components/Styled/Faq";
 import { useState } from "react";
 import Button from "@/Components/Functional/Button";
@@ -14,62 +15,91 @@ import Icon from "@/Components/Functional/Icon";
 import rightArrow from "@/public/images/icons/rightChevron.svg";
 import { useTheme } from "styled-components";
 import { UITheme } from "@/types";
+import { Fragment } from "react";
 
-export default function FAQs({
-  data,
+interface faqItem {
+  _id: string;
+  question: string;
+  answer: string;
+  thumbnail: string;
+  blogPost: string;
+  interest: number;
+  _v: number;
+}
+
+const FunctionalQuestion = ({
+  question,
+  onClick,
+  mobileActive,
+  desktopActive,
 }: {
-  data: {
-    _id: string;
-    question: string;
-    answer: string;
-    thumbnail: string;
-    blogPost: string;
-    interest: number;
-    _v: number;
-  }[];
-}) {
+  question: string;
+  onClick: () => void;
+  desktopActive: boolean;
+  mobileActive: boolean;
+}) => {
   const theme = useTheme() as UITheme;
-  const [selected, setSelected] = useState(() => {
-    return Array.isArray(data)
-      ? data[0]
-      : { id_: "", question: "", answer: "", thumbail: "", thumbnail: "" };
-  });
+  return (
+    <Question
+      onClick={onClick}
+      active={mobileActive}
+      desktopActive={desktopActive}
+    >
+      <QuestionLabel>{question}</QuestionLabel>
+      <Arrow active={mobileActive}>
+        <Icon
+          src={rightArrow.src}
+          height="16px"
+          width="8px"
+          color={theme.colors.gray}
+        />
+      </Arrow>
+    </Question>
+  );
+};
 
-  if (!Array.isArray(data)) return null;
+export default function FAQs({ faqs }: { faqs: faqItem[] }) {
+  const [mobileSelected, setMobileSelected] = useState<string[]>([""]);
+  const [desktopSelected, setDesktopSelected] = useState<string>(
+    (faqs[0] ?? {})?._id
+  );
+
+  if (!Array.isArray(faqs)) return null;
   return (
     <Container>
-      <List>
-        {data.map((el) => {
-          return (
-            <Item
-              key={el._id}
-              selected={selected?.question === el?.question}
-              onClick={() => setSelected(el)}
-            >
-              <span>{el.question}</span>
+      {faqs.map((faq: faqItem) => {
+        const mobileActive = mobileSelected.includes(faq._id);
+        const desktopActive = desktopSelected === faq._id;
 
-              <Icon
-                src={rightArrow.src}
-                height="16px"
-                width="8px"
-                color={
-                  selected?.question === el?.question
-                    ? theme.colors.blackFont
-                    : theme.colors.gray
-                }
-              />
-            </Item>
-          );
-        })}
-      </List>
-      <Preview key={selected?.question}>
-        <Title>{selected?.question}</Title>
-        <Description>{selected?.answer}</Description>
-        <ThumbWrapper>
-          <Thumbnail src={selected?.thumbnail} alt={selected?.question} />
-        </ThumbWrapper>
-        <Button marginTop="1.25rem">Read More</Button>
-      </Preview>
+        return (
+          <Fragment key={faq._id}>
+            <FunctionalQuestion
+              onClick={() =>
+                setMobileSelected((prev: string[]) => {
+                  setDesktopSelected(faq._id);
+                  const index = mobileSelected.indexOf(faq._id);
+                  if (index > -1) {
+                    return [...prev.slice(0, index), ...prev.slice(index + 1)];
+                  } else return [...prev, faq._id];
+                })
+              }
+              question={faq.question}
+              mobileActive={mobileActive}
+              desktopActive={desktopActive}
+            />
+            <Answer mobileActive={mobileActive} desktopActive={desktopActive}>
+              <AnswerLabel>{faq?.question}</AnswerLabel>
+              <AnswerDescription>{faq?.answer}</AnswerDescription>
+              <ThumbWrapper>
+                {faq.thumbnail && (
+                  <Thumbnail src={faq?.thumbnail} alt={faq?.question} />
+                )}
+              </ThumbWrapper>
+              <Button marginTop="1.25rem">Read More</Button>
+            </Answer>
+          </Fragment>
+        );
+      })}
     </Container>
   );
 }
