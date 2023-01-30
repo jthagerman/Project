@@ -19,6 +19,7 @@ export const Container = styled.footer<{ src: string }>`
     left: auto;
     right: auto;
     width: 100%;
+    min-width: 500px;
     top: 0px;
     height: 180px;
     background-size: 130% 330px;
