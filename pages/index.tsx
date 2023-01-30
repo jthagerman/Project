@@ -7,6 +7,8 @@ import RecommendedPart from "@/Components/Functional/RecommendedPart";
 import Footer from "@/Components/Functional/Footer";
 import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
 import { Page, Content, VerticalSpacer } from "@/Components/Styled/Page";
+import ChartSection from "@/Components/Functional/ChartSection";
+
 
 export default function Home({ time, parts, knowledge_bank }: any) {
   return (
@@ -19,6 +21,7 @@ export default function Home({ time, parts, knowledge_bank }: any) {
         <Hero />
         <Content>
           <VerticalSpacer size="60px" />
+          <ChartSection />
           <DragyAdvertisement />
           <VerticalSpacer size="20px" />
           <div
