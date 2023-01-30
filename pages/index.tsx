@@ -5,11 +5,13 @@ import Footer from "@/Components/Functional/Footer";
 import Hero from "@/Components/Functional/Hero";
 import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
 import { Page, Content, VerticalSpacer } from "@/Components/Styled/Page";
-
+import Heading from "@/Components/Functional/Heading";
+import RecommendedPart from "@/Components/Functional/RecommendedPart";
 import ChartSection from "@/Components/Functional/ChartSection";
-
+import FAQs from "@/Components/Functional/FAQ";
 
 export default function Home({ time, parts, knowledge_bank }: any) {
+  console.log(knowledge_bank);
   return (
     <>
       <Head>
@@ -19,13 +21,19 @@ export default function Home({ time, parts, knowledge_bank }: any) {
       <Page>
         <Hero />
         <Content>
+          <Heading
+            heading="Platform world-record holder"
+            subheading="The world’s fastest 3.3T in the 1/4th mile."
+          />
           <VerticalSpacer size="60px" />
           <ChartSection />
           <DragyAdvertisement />
           <VerticalSpacer size="20px" />
-
+          <Heading
+            heading="Recommnended Parts"
+            subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          />
           <div
-
             style={{
               display: "flex",
               justifyContent: "space-between",
@@ -37,6 +45,10 @@ export default function Home({ time, parts, knowledge_bank }: any) {
             ))}
           </div>
           <VerticalSpacer size="20px" />
+          <Heading
+            heading="Knowledge Bank"
+            subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          />
           <FAQs faqs={knowledge_bank} />
           <VerticalSpacer size="60px" />
         </Content>
