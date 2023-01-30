@@ -9,6 +9,7 @@ import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
 import { Page, Content, VerticalSpacer } from "@/Components/Styled/Page";
 import ChartSection from "@/Components/Functional/ChartSection";
 
+
 export default function Home({ time, parts, knowledge_bank }: any) {
   return (
     <>
@@ -35,7 +36,7 @@ export default function Home({ time, parts, knowledge_bank }: any) {
             ))}
           </div>
           <VerticalSpacer size="20px" />
-          <FAQs data={knowledge_bank} />
+          <FAQs faqs={knowledge_bank} />
           <VerticalSpacer size="60px" />
         </Content>
         <Footer />
