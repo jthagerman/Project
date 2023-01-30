@@ -6,9 +6,12 @@ import Hero from "@/Components/Functional/Hero";
 import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
 import { Page, Content, VerticalSpacer } from "@/Components/Styled/Page";
 import Heading from "@/Components/Functional/Heading";
+import RecommendedPart from "@/Components/Functional/RecommendedPart";
 import ChartSection from "@/Components/Functional/ChartSection";
+import FAQs from "@/Components/Functional/FAQ";
 
 export default function Home({ time, parts, knowledge_bank }: any) {
+  console.log(knowledge_bank);
   return (
     <>
       <Head>
@@ -46,7 +49,7 @@ export default function Home({ time, parts, knowledge_bank }: any) {
             heading="Knowledge Bank"
             subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           />
-          <FAQs data={knowledge_bank} />
+          <FAQs faqs={knowledge_bank} />
           <VerticalSpacer size="60px" />
         </Content>
         <Footer />
