@@ -6,6 +6,9 @@ import Hero from "@/Components/Functional/Hero";
 import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
 import { Page, Content, VerticalSpacer } from "@/Components/Styled/Page";
 
+import ChartSection from "@/Components/Functional/ChartSection";
+
+
 export default function Home({ time, parts, knowledge_bank }: any) {
   return (
     <>
@@ -17,9 +20,12 @@ export default function Home({ time, parts, knowledge_bank }: any) {
         <Hero />
         <Content>
           <VerticalSpacer size="60px" />
+          <ChartSection />
           <DragyAdvertisement />
           <VerticalSpacer size="20px" />
-          {/* <div
+
+          <div
+
             style={{
               display: "flex",
               justifyContent: "space-between",
@@ -29,8 +35,9 @@ export default function Home({ time, parts, knowledge_bank }: any) {
             {parts.map((part: any) => (
               <RecommendedPart key={Math.random()} {...part} />
             ))}
-          </div> */}
+          </div>
           <VerticalSpacer size="20px" />
+          <FAQs faqs={knowledge_bank} />
           <VerticalSpacer size="60px" />
         </Content>
         <Footer />
