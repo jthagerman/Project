@@ -1,12 +1,11 @@
 import Head from "next/head";
 import { faker } from "@faker-js/faker";
-import FAQs from "@/Components/Functional/FAQ";
 import { getKnowledgeBankEntries } from "@/data/fetchers/GetKnowledgeBankEntries";
-import Hero from "@/Components/Functional/Hero";
-import RecommendedPart from "@/Components/Functional/RecommendedPart";
 import Footer from "@/Components/Functional/Footer";
+import Hero from "@/Components/Functional/Hero";
 import DragyAdvertisement from "@/Components/Functional/DragyAdvertisement";
 import { Page, Content, VerticalSpacer } from "@/Components/Styled/Page";
+
 import ChartSection from "@/Components/Functional/ChartSection";
 
 
@@ -24,7 +23,9 @@ export default function Home({ time, parts, knowledge_bank }: any) {
           <ChartSection />
           <DragyAdvertisement />
           <VerticalSpacer size="20px" />
+
           <div
+
             style={{
               display: "flex",
               justifyContent: "space-between",
