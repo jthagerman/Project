@@ -14,10 +14,13 @@ const poppins = Poppins({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${outfit.className} ${poppins.className}`}>
+    <div
+      className={`${outfit.className} ${poppins.className}`}
+      style={{ display: "contents" }}
+    >
       <Theme>
         <Component {...pageProps} />
       </Theme>
-    </main>
+    </div>
   );
 }

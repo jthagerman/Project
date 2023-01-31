@@ -7,6 +7,7 @@ export type UITheme = {
         whiteBodyColor: string
         whiteBackgroundContrast: string
         blackBackground: string
+        background: string
         blackFont: string
         whiteFont: string
         white: string
@@ -14,6 +15,7 @@ export type UITheme = {
         gray: string
         orange: string
         green: string
+        lightGray: string
     },
 
     fonts: {

@@ -18,6 +18,8 @@ export default function Button({
   margin,
   hoverColor,
   hoverFontColor,
+  mobileFontSize = "1rem",
+  mobileHeight = "3.0635rem",
 }: {
   children: React.ReactNode;
   icon?: React.ReactNode;
@@ -37,6 +39,8 @@ export default function Button({
   margin?: string;
   hoverColor?: string;
   hoverFontColor?: string;
+  mobileFontSize?: string;
+  mobileHeight?: string;
 }) {
   return (
     <Container
@@ -56,6 +60,8 @@ export default function Button({
       margin={margin}
       hoverColor={hoverColor}
       hoverFontColor={hoverFontColor}
+      mobileFontSize={mobileFontSize}
+      mobileHeight={mobileHeight}
     >
       {icon && icon}
       <Text>{children}</Text>
