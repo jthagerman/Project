@@ -65,7 +65,7 @@ const GlobalStyle = createGlobalStyle<{ theme: UITheme }>`
         -moz-osx-font-smoothing: grayscale;
     }
 
-    h1 {
+    h2 {
         font-size: ${(props) => props.theme.fonts.fontSizes.header};
         font-weight: ${(props) => props.theme.fonts.fontWeights.bold};
     }
