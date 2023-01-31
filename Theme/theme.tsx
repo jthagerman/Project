@@ -54,6 +54,9 @@ const theme: any = {
 const GlobalStyle = createGlobalStyle<{ theme: UITheme }>`
     html {
         max-width: 100vw;
+        max-width: 100dvw;
+        min-height: 100vh;
+        min-height: 100dvh;
         background-color: #F9F9F9;
         font-family: 'Outfit'
     }
@@ -63,6 +66,7 @@ const GlobalStyle = createGlobalStyle<{ theme: UITheme }>`
         font-weight: ${(props) => props.theme.fonts.fontWeights.regular};
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
     }
 
     h2 {

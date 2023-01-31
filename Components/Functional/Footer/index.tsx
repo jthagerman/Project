@@ -17,19 +17,20 @@ import logoIcon from "public/images/icons/Logo.svg";
 import { useTheme } from "styled-components";
 import { UITheme } from "@/types";
 import footerScribble from "public/images/Layout/Scribble.png";
+import brush from "public/images/Home/Brush.svg";
 
 export default function Footer() {
   const theme = useTheme() as UITheme;
   return (
-    <Container src={footerScribble.src}>
+    <Container src={brush.src}>
       <Content>
         <Row align="flex-end">
           <Column flex="1.2">
-            <h1>Stay in loop</h1>
-            <h2>
+            <h2>Stay in loop</h2>
+            <h3>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
               elementum vel sem sit amet aliquet. In sed tristiqu.
-            </h2>
+            </h3>
           </Column>
 
           <Column flex=".1">
@@ -42,8 +43,8 @@ export default function Footer() {
                 color={theme.colors.blackFont}
                 padding={"0px .8rem"}
                 width={"max-content"}
+                margin="5px"
               >
-                {" "}
                 Read More
               </Button>
             </InputWrapper>

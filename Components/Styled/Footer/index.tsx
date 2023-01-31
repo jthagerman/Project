@@ -9,26 +9,35 @@ export const Container = styled.footer<{ src: string }>`
   width: 100%;
   color: ${(props) => props.theme.colors.grayFont};
   font-family: ${(props) => props.theme.fonts.names.poppins};
-  overflow: show;
+  overflow: hidden;
   background-color: ${(props) => props.theme.colors.blackBackground};
 
   ::after {
     content: "";
-    left: 0px;
-    right: -1px;
-    top: -1px;
-    height: 200px;
-    background-size: contain;
+    margin-left: -150px;
+    margin-right: -150px;
+    left: auto;
+    right: auto;
+    width: 100%;
+    min-width: 500px;
+    top: 0px;
+    height: 180px;
+    background-size: 130% 330px;
     background-repeat: no-repeat;
     background-image: url(${(props) => props.src});
-    background-position: center top;
+    background-position: center bottom;
     position: absolute;
     display: inline-block;
     pointer-events: none;
+    justify-self: center;
+    overflow: hidden;
   }
 
-  > div:first-child {
+  > div:first-child > div:first-child {
     border-bottom: 1px solid ${(props) => props.theme.colors.grayFont};
+    @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+      border: none;
+    }
   }
 `;
 
@@ -63,7 +72,6 @@ export const Logo = styled.img`
   width: 130px;
   height: 51px;
   margin: 1rem 0px 0px 0px;
-  user-drag: none;
 `;
 
 export const Disclaimer = styled.p`
@@ -80,12 +88,18 @@ export const Column = styled.div<{ flex?: string }>`
   flex-direction: column;
   flex: ${(props) => (props.flex ? props.flex : `1`)};
 
-  h1 {
+  h2 {
     color: ${(props) => props.theme.colors.white};
     font-family: ${(props) => props.theme.fonts.names.outfit};
     margin: 0px;
+    min-width: 300px;
+    font-size: 3.75rem;
+    font-weight: 600;
+    @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+      font-size: 3rem;
+    }
   }
-  h2 {
+  h3 {
     font-weight: ${(props) => props.theme.fonts.fontWeights.regular};
     font-size: ${(props) => props.theme.fonts.fontSizes.regular};
     max-width: 470px;
@@ -97,6 +111,8 @@ export const Column = styled.div<{ flex?: string }>`
   @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
     align-items: center;
     justify-content: center;
+    width: 100%;
+    flex: unset;
   }
 `;
 
@@ -114,6 +130,7 @@ export const List = styled.ul`
 
   @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
     padding: 0px;
+    align-self: center;
   }
 `;
 
@@ -128,6 +145,7 @@ export const Input = styled.input`
   margin: 0px;
   padding: 1rem 0.5rem;
   font-size: ${(props) => props.theme.fonts.fontSizes.regular};
+  text-align: start;
 `;
 
 export const InputWrapper = styled.div`
@@ -135,23 +153,25 @@ export const InputWrapper = styled.div`
   grid-template-columns: 1fr max-content;
   width: 366px;
   border: 2px solid ${(props) => props.theme.colors.grayFont};
+  box-sizing: border-box;
 
   @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
+    margin: auto;
     width: 100%;
   }
 `;
 
 export const Content = styled.div`
-  max-width: 100vw;
   margin: 100px 1rem 3rem 1rem;
 
   @media (min-width: ${(props) => props.theme.breakpoints.laptop}) {
-    margin: 180px 1rem 3rem 1rem;
+    margin: 160px 1rem 3rem 1rem;
   }
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     margin: 50px 1rem 3rem 1rem;
   }
+
   @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
     display: flex;
     flex-direction: column;
@@ -159,11 +179,14 @@ export const Content = styled.div`
     justify-content: center;
     text-align: center;
     padding: 0;
-    margin: 0;
+    margin: 0px 1rem;
   }
 `;
 
 export const ContentRow = styled(Row)`
-  align-items: center;
   justify-content: center;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    padding: 1rem 0rem 3rem 0rem;
+  }
 `;
