@@ -14,3 +14,7 @@ export const Subtitle = styled.h3`
   font-weight: ${(props) => props.theme.fonts.fontWeights.thin};
   font-style: italic;
 `;
+
+export const ReadMore = styled.h4`
+  border-top: 1px solid blue;
+`;

@@ -62,6 +62,7 @@ export const Thumbnail = styled.img`
     grid-row-end: 4;
     align-self: center;
     margin: 5px 0px;
+    max-width: 220px;
     max-height: 150px;
   }
 `;

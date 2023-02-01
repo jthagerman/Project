@@ -1,48 +1,50 @@
 import { Container, Title, Subtitle } from "@/Components/Styled/BlogBody";
 import ReactMarkdown from "react-markdown";
 import type { BlogBodyProps } from "@/Components/Functional/BlogBody/index.d";
+import { VerticalSpacer } from "@/Components/Styled/Page";
 
 export default function BlogBody({ title, subtitle, content }: BlogBodyProps) {
-  const markdown = `A paragraph with *emphasis* and **strong importance**.
+  const markdown = `
 
-  > A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+  ## Atque medio illum
   
-  * Note that --- not considering the asterisk --- the actual text
-  content starts at 4-columns in.
+  Lorem markdownum [aequora](http://paenitet.io/). Diu sibi vellera quicquam
+  visamque, capi pugnabant Romethiumque undis. Qua **huc** aliis pontus, terraeque
+  saepe!
   
-  > Block quotes are
-  > written like so.
-  >
-  > They can span multiple paragraphs,
-  > if you like.
+  > **Fas apta ferar** Occupat cinguntur et medio et viridem fessa. Miser *in*
+  > similis lascive rogavit.
   
-  Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all
-  in chapters 12--14"). Three dots ... will be converted to an ellipsis.
-  Unicode is supported. ☺
-  An h2 header
-------------
+  ## Concipiunt choreas parat iam
+  
+  Aliter de exegit, licet ante esse, tenuique virum! Armo ante de religaret Iapeto
+  eadem temerarius *debita aut*; tremor miserisque capit.Mauris elit dolor, convallis 
+  in consequat et, accumsan nec magna. Quisque rutrum, diam at fringilla luctus, ipsum 
+  nisl imperdiet metus, ut pharetra nulla lorem vel elit. Morbi eu facilisis odio. Aenean
+  semper, nulla sit amet tincidunt gravida, sapien metus ultrices dolor, sit amet egestas
+  metus lorem non orci. Integer blandit luctus ante in dapibus. Sed elementum viverra
+  convallis. Aenean in nibh tristique, tempus velit id, sodales turpis. Vivamus in nulla 
+  diam. Quisque elementum iaculis mi, a ultricies nisi lobortis eu. Duis ac varius ipsum. 
+  Proin eros velit, mattis non massa non, ullamcorper congue mauris. Nullam felis turp
+    
+  ## Avus sic furit in eademque gravis reliquit
+  n ante ipsum, maximus sit amet laoreet nec, blandit a elit. Ut ut tortor pretium, faucibus
+   odio sit amet, mattis ipsum. Suspendisse magna nulla, venenatis pharetra malesuada id, 
+   scelerisque ut urna. Vestibulum tincidunt diam sed ante placerat, eget accumsan dui molestie.
+  Cras eu est iaculis, dictum augue et, varius sem. Sed malesuada velit magna, 
+  eu hendrerit dui fermentum id. Praesent in malesuada odio, sed dignissim mi. 
+  Curabitur sed lectus eu dui congue malesuada id in felis.
 
-Here's a numbered list:
 
- 1. first item
- 2. second item
- 3. third item
-
-Note again how the actual text starts at 4 columns in (4 characters
-from the left side). Here's a code sample:
-
-    # Let me re-iterate ...
-    for i in 1 .. 10 { do-something(i) }
-
-As you probably guessed, indented 4 spaces. By the way, instead of
-indenting the block, you can use delimited blocks, if you like:
   `;
 
   return (
     <Container>
       <Title>{title}</Title>
       <Subtitle>{subtitle}</Subtitle>
+      <VerticalSpacer size="1rem" />
       <ReactMarkdown>{markdown}</ReactMarkdown>
+      <VerticalSpacer size="1rem" />
     </Container>
   );
 }

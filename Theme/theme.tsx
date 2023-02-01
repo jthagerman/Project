@@ -83,6 +83,11 @@ const GlobalStyle = createGlobalStyle<{ theme: UITheme }>`
     img {
       user-drag: none;
     }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
 `;
 
 export default function Theme({ children }: { children: React.ReactNode }) {
