@@ -1,14 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-  display: flex;
-  flex-flow: row wrap;
-  max-width: min(1170px, 100vw);
+  padding: 2rem;
   background-color: ${(props) => props.theme.colors.white};
   box-sizing: border-box;
   border: 2px solid #ebebeb;
   justify-content: center;
   align-items: center;
+  min-height: 400px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: repeat(3, auto);
+  align-content: center;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.tablet}) {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+  }
 `;
 export const Header = styled.h1`
   font-size: 2.625rem;
@@ -29,13 +37,15 @@ export const ButtonWrapper = styled.div`
   display: none;
 `;
 
-export const Section = styled.div`
-  flex: 1;
-  margin: 50px 1rem;
-`;
 export const Image = styled.img`
   background-size: contain;
   background-repeat: no-repeat;
-  width: 100%;
+  max-width: 100%;
   background-image: url(${(props) => props.src});
+  grid-row: span 2;
+  max-height: 300px;
+  min-width: 200px;
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    grid-row: span 1;
+  }
 `;
