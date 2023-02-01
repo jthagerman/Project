@@ -12,26 +12,30 @@ export const Container = styled.section<{ src: string; scribble: string }>`
   background-position: center;
   color: ${(props) => props.theme.colors.white};
   position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
 
   @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
-    height: 100vh;
+    height: 500px;
     min-height: unset;
     max-height: unset;
   }
 
   ::after {
     content: "";
-    left: 0px;
-    right: -1px;
-    top: 0px;
-    bottom: -20px;
-    background-size: contain;
+    left: auto;
+    right: auto;
+    bottom: 0px;
+    width: 100%;
+    min-width: 300px;
+    height: 180px;
+    background-size: 120% 400px;
     background-repeat: no-repeat;
-    background-image: url(${(props) => props.scribble});
-    background-position: center bottom;
+    background-position: center top;
     position: absolute;
-    display: inline-block;
     pointer-events: none;
+    overflow: hidden;
+    background-image: url(${(props) => props.scribble});
 
     @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
       bottom: -1px;
