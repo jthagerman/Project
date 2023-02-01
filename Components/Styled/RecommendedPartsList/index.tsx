@@ -5,7 +5,7 @@ export const Container = styled.div`
   justify-content: space-between;
   width: calc(100% - 2rem);
   margin: 1rem;
-  gap: 5px 10px;
+  gap: 1rem 10px;
 
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     flex-direction: column;

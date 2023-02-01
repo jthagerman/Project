@@ -17,14 +17,14 @@ export const Container = styled.div`
     grid-template-columns: minmax(100px, 200px) 4fr;
     gap: 0px 1rem;
 
-    > *:not(:first-child) {
+    > div:not(:first-child) {
       grid-column: 2;
     }
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
     grid-template-columns: 1fr;
-    > *:not(:first-child) {
+    > div:not(:first-child) {
       grid-column: 1;
     }
   }
