@@ -9,6 +9,7 @@ import Heading from "@/Components/Functional/Heading";
 import RecommendedPart from "@/Components/Functional/RecommendedPart";
 import ChartSection from "@/Components/Functional/ChartSection";
 import FAQs from "@/Components/Functional/FAQ";
+import RecommendedPartsList from "@/Components/Functional/RecommendedPartsList";
 
 export default function Home({ time, parts, knowledge_bank }: any) {
   console.log(knowledge_bank);
@@ -33,17 +34,7 @@ export default function Home({ time, parts, knowledge_bank }: any) {
             heading="Recommnended Parts"
             subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
-          >
-            {parts.map((part: any) => (
-              <RecommendedPart key={Math.random()} {...part} />
-            ))}
-          </div>
+          <RecommendedPartsList parts={parts} />
           <VerticalSpacer size="20px" />
           <Heading
             heading="Knowledge Bank"

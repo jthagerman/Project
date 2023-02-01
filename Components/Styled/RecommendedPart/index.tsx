@@ -10,6 +10,24 @@ export const Container = styled.div`
   box-sizing: border-box;
   border: 2px solid #ebebeb;
   padding: 18px;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    width: unset;
+    height: unset;
+    grid-template-columns: minmax(100px, 200px) 4fr;
+    gap: 0px 1rem;
+
+    > *:not(:first-child) {
+      grid-column: 2;
+    }
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    grid-template-columns: 1fr;
+    > *:not(:first-child) {
+      grid-column: 1;
+    }
+  }
 `;
 
 export const Thumbnail = styled.img`
@@ -18,6 +36,11 @@ export const Thumbnail = styled.img`
   align-self: center;
   justify-self: center;
   margin: 11px 0px;
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    grid-row-start: 1;
+    grid-row-end: 5;
+    max-width: 100%;
+  }
 `;
 
 export const Name = styled.div`
