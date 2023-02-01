@@ -15,11 +15,12 @@ import Leaderboard from "@/public/images/icons/leaderboard.svg";
 import Icon from "@/Components/Functional/Icon";
 import { useTheme } from "styled-components";
 import { UITheme } from "@/types";
+import Brush from "public/images/Home/Brush.svg";
 
 export default function Hero() {
   const theme = useTheme() as UITheme;
   return (
-    <Container src={heroImage.src} scribble={scribble.src}>
+    <Container src={heroImage.src} scribble={Brush.src}>
       <Wrapper>
         <SubHeading>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
