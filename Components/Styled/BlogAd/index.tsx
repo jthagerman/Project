@@ -20,6 +20,10 @@ export const Container = styled.aside`
     grid-template-rows: min-content 1fr min-content;
     gap: 5px 1rem;
     border-top: 1px solid ${(props) => props.theme.colors.lightGray};
+    grid-template-areas:
+      "thumbnail name"
+      "thumbnail description"
+      "thumbnail buttons";
   }
 `;
 
@@ -28,8 +32,6 @@ export const Name = styled.h2`
   font-size: 38px;
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     font-size: 22px;
-    grid-column: 2;
-    grid-row: 1;
     margin: 0px;
   }
 `;
@@ -40,8 +42,6 @@ export const Description = styled.p`
   margin: 1rem 0px;
   color: rgba(0, 0, 0, 0.6);
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    grid-column: 2;
-    grid-row: 2;
     margin: 0px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -57,19 +57,11 @@ export const Thumbnail = styled.img`
   object-fit: cover;
   background-color: ${(props) => props.theme.colors.lightGray};
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    grid-column: 1;
-    grid-row: 1;
-    grid-row-end: 4;
-    align-self: center;
+    grid-area: thumbnail;
     margin: 5px 0px;
     max-width: 220px;
     max-height: 150px;
   }
 `;
 
-export const ButtonWrapper = styled.div`
-  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    grid-column: 2;
-    grid-row: 3;
-  }
-`;
+export const ButtonWrapper = styled.div``;
