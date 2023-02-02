@@ -10,23 +10,33 @@ export const Container = styled.div`
   box-sizing: border-box;
   border: 2px solid #ebebeb;
   padding: 18px;
+  grid-template-areas:
+    "thumbnail"
+    "name"
+    "description"
+    "price"
+    "buttons";
 
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     width: unset;
     height: unset;
-    grid-template-columns: minmax(100px, 200px) 4fr;
     gap: 0px 1rem;
-
-    > div:not(:first-child) {
-      grid-column: 2;
-    }
+    grid-template-columns: minmax(100px, 220px) 4fr;
+    grid-template-areas:
+      "thumbnail name"
+      "thumbnail description"
+      "thumbnail price"
+      "thumbnail buttons";
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
     grid-template-columns: 1fr;
-    > div:not(:first-child) {
-      grid-column: 1;
-    }
+    grid-template-areas:
+      "thumbnail"
+      "name"
+      "description"
+      "price"
+      "buttons";
   }
 `;
 
@@ -36,16 +46,13 @@ export const Thumbnail = styled.img`
   align-self: center;
   justify-self: center;
   margin: 11px 0px;
-  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    grid-row-start: 1;
-    grid-row-end: 5;
-    max-width: 100%;
-  }
+  grid-area: thumbnail;
 `;
 
 export const Name = styled.div`
   font-size: 1.75rem;
   font-weight: ${(props) => props.theme.fonts.fontWeights.bold};
+  grid-area: name;
 `;
 
 export const Description = styled.div`
@@ -60,14 +67,19 @@ export const Description = styled.div`
   overflow: hidden;
   text-overflow: hidden;
   max-height: 160px;
+  grid-area: description;
 `;
+
 export const Price = styled.div`
   font-size: 1.5rem;
   margin: 21px 0px;
+  grid-area: price;
   font-weight: ${(props) => props.theme.fonts.fontWeights.bold};
 `;
+
 export const Buttons = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0px 12px;
+  grid-area: buttons;
 `;
