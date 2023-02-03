@@ -17,6 +17,8 @@ export const Container = styled.button<{
   margin?: string;
   hoverColor?: string;
   hoverFontColor?: string;
+  mobileFontSize?: string;
+  mobileHeight?: string;
 }>`
   all: unset;
   outline: none;
@@ -59,6 +61,11 @@ export const Container = styled.button<{
       background-color: ${(props) =>
         props.hoverFontColor ? props.hoverFontColor : props.color};
     }
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.largePhone}) {
+    ${(props) => props.mobileFontSize && `font-size: ${props.mobileFontSize};`}
+    ${(props) => props.mobileHeight && `height: ${props.mobileHeight}`};
   }
 `;
 

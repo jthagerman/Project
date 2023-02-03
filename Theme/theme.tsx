@@ -2,9 +2,10 @@ import { ThemeProvider } from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import { UITheme } from "@/types";
 
-const theme: any = {
+const theme: UITheme = {
   colors: {
     whiteBackground: "#F5F5F5",
+    background: "#F9F9F9",
     whiteBodyColor: "#f9f9f9",
     whiteBackgroundContrast: "#F7F7F7",
     blackBackground: "#000000",
@@ -15,6 +16,7 @@ const theme: any = {
     gray: "#00000099",
     orange: "#FA885F",
     green: "#45D313",
+    lightGray: "#CCCCCC",
   },
 
   fonts: {
@@ -54,26 +56,38 @@ const theme: any = {
 const GlobalStyle = createGlobalStyle<{ theme: UITheme }>`
     html {
         max-width: 100vw;
+        max-width: 100dvw;
+        min-height: 100vh;
+        min-height: 100dvh;
         background-color: #F9F9F9;
         font-family: 'Outfit'
     }
+
+
     body {
         margin: 0px;
         font-size: ${(props) => props.theme.fonts.fontSizes.regular};
         font-weight: ${(props) => props.theme.fonts.fontWeights.regular};
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+        max-width: 100vw;
+        max-width: 100dvw;
+        min-height: 100vh;
+        min-height: 100dvh;
     }
-
-    h2 {
+    h1 {
         font-size: ${(props) => props.theme.fonts.fontSizes.header};
         font-weight: ${(props) => props.theme.fonts.fontWeights.bold};
     }
-
     img {
       user-drag: none;
     }
 
+    a {
+      text-decoration: none;
+      color: inherit
+    }
 `;
 
 export default function Theme({ children }: { children: React.ReactNode }) {
